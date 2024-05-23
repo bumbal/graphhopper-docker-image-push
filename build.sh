@@ -22,7 +22,8 @@ USAGE
 
 if [ "$1" == "--push" ]; then
   push="true"
-  docker login --username "${DOCKERHUB_USER}" --password-stdin <<< "${DOCKERHUB_TOKEN}" || exit $?
+  echo "${DOCKERHUB_TOKEN}" | docker login --username "${DOCKERHUB_USER}" --password-stdin || exit $?
+  #docker login --username "${DOCKERHUB_USER}" --password-stdin <<< "${DOCKERHUB_TOKEN}" || exit $?
   shift
 else
   push="false"
